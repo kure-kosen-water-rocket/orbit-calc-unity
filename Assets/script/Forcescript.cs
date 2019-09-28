@@ -18,6 +18,10 @@ public class Forcescript : MonoBehaviour
     public float nozzlearea,airpressure,outpressure,water;//ペットボトルの口の面積,空気圧、大気圧、水量
     public float dis;          //飛んだ距離
 
+    float gravity=9.8f;
+    float miri=0.001f;
+    float airratio;
+    float pressurratio=0.928f;
     float waterpressur, pre, allpressur;//水圧、気圧/大気圧の値、気圧の合計
 
     GameObject target;     //    最高点
@@ -25,8 +29,9 @@ public class Forcescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        airratio = 2 / 7;
         pre = allpressur / outpressure;
-        waterpressur = water * 0.001f * 9.8f;//水量から水圧を計算
+        waterpressur = water * miri * gravity;//水量から水圧を計算
         target = gameObject;            //ターゲットをこのオブジェクトに
         rb = gameObject.GetComponent<Rigidbody>();//このオブジェクトのRigidbodyを取得
         startposi = transform.position;           //初期位置をこのオブジェクトの位置に                      
@@ -36,8 +41,8 @@ public class Forcescript : MonoBehaviour
     // Update is called once per frame
     void Update() {
        
-        double num = Mathf.Pow(pre, 2 / 7);
-        injectionforce = 7 * nozzlearea * allpressur * ((float)num-1)+nozzlearea*(allpressur*0.928f-outpressure);//力の値を計算
+        double num = Mathf.Pow(pre,airratio);
+        injectionforce = 7 * nozzlearea * allpressur * ((float)num-1)+nozzlearea*(allpressur*pressurratio-outpressure);//力の値を計算
         windforce = injectionforce * windforceway;//風力を決定
         force = injectionforce * forceway;  //発射の力を設定
 
