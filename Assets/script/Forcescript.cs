@@ -20,6 +20,7 @@ public class Forcescript : MonoBehaviour
     public float outpressure;//大気圧
     public float water;//水量
     public float flyinddistance;          //飛んだ距離
+    public float airresistance;           //空気抵抗係数
 
     float gravity=9.8f;
     float miri=0.001f;
@@ -49,10 +50,12 @@ public class Forcescript : MonoBehaviour
         windforce = injectionforce * windforcedirection;//風力を決定
         force = injectionforce * forcedirection;  //発射の力を設定
 
-     //   look = target.transform.position - transform.position;//最高点の座標を算出
-    //  Quaternion to = Quaternion.FromToRotation(Vector3.up, look);//ロケットの向きを決定
+        //   look = target.transform.position - transform.position;//最高点の座標を算出
+        //  Quaternion to = Quaternion.FromToRotation(Vector3.up, look);//ロケットの向きを決定
 
-      //  transform.rotation= Quaternion.Slerp(transform.rotation,to , Time.deltaTime);//最高点の方向を向く
+        //  transform.rotation= Quaternion.Slerp(transform.rotation,to , Time.deltaTime);//最高点の方向を向く
+
+        rb.AddForce(-airresistance * rb.velocity);
 
         if (Input.GetKeyUp(KeyCode.Return))//enterキーを押した時
         {
