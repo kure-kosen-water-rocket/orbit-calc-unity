@@ -45,8 +45,7 @@ public class Forcescript : MonoBehaviour
     void Update() {
        
         double num = Mathf.Pow(pre,airratio);
-        injectionforce = 7 * nozzlearea * allpressur * 
-        ((float)num-1)+nozzlearea*(allpressur*pressurratio-outpressure);//力の値を計算
+        injectionforce = 7 * nozzlearea * allpressur * ((float)num-1)+nozzlearea*(allpressur*pressurratio-outpressure);//力の値を計算
         windforce = injectionforce * windforcedirection;//風力を決定
         force = injectionforce * forcedirection;  //発射の力を設定
 
