@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7a36fabc94b47779c6beab419a10dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weit: 0.45
+  weit: 0.5
 --- !u!136 &1803954385
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -594,4 +594,4 @@ MonoBehaviour:
   outpressure: 101.3
   water: 350
   flyinddistance: 0
-  airresistance: 0.17
+  airresistance: 0.18
