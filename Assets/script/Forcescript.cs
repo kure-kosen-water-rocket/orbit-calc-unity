@@ -21,12 +21,17 @@ public class Forcescript : MonoBehaviour
     public float water;//水量
     public float flyinddistance;//飛んだ距離
     public float airresistance; //空気抵抗係数
+    public float liftcoefficient;//揚力係数
+    public float wingarea;//翼の面積
+    public float flyspeed;//速さ
 
     float gravity=9.8f;//重力
     float miri=0.001f;//ミリ単位
     float airratio=2/7;//空気の比率
     float pressurratio=0.928f;
+    float airdensity = 1.293f;//空気密度
     float waterpressur, pre, allpressur;//水圧、気圧/大気圧の値、気圧の合計
+    float lift;//揚力
 
     GameObject target;     //    最高点
 
@@ -49,7 +54,7 @@ public class Forcescript : MonoBehaviour
         windforce = injectionforce * windforcedirection;//風力を決定
         force = injectionforce * forcedirection;  //発射の力を設定
 
-        rb.AddForce(-airresistance * rb.velocity); //空気抵抗を加える
+        //rb.AddForce(-airresistance * rb.velocity); //空気抵抗を加える
 
         if (Input.GetKeyUp(KeyCode.Return))//enterキーを押した時
         {
@@ -62,6 +67,8 @@ public class Forcescript : MonoBehaviour
             flyinddistance = Vector3.Distance(endposition, startposition);
            
         }
+
+        lift = (1 / 2) * (liftcoefficient * wingarea * flyspeed * flyspeed * airdensity);//揚力の計算
     }
     void Inp()
     {
