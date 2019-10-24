@@ -15,6 +15,7 @@ public class Forcescript : MonoBehaviour
     public Vector3 endposition;
   
     public float injectionforce;//力の値 
+
     public float nozzlearea;//ペットボトルの口の面積
     public float airpressure;//空気圧
     public float outpressure;//大気圧
@@ -25,11 +26,11 @@ public class Forcescript : MonoBehaviour
     public float wingarea;//翼の面積
     public float flyspeed;//速さ
 
-    float gravity=9.8f;//重力
-    float miri=0.001f;//ミリ単位
-    float airratio=2/7;//空気の比率
-    float pressurratio=0.928f;
-    float airdensity = 1.293f;//空気密度
+    const float gravity=9.8f;//重力
+    const float miri=0.001f;//ミリ単位
+    const float airratio=2/7;//空気の比率
+    const float pressurratio=0.928f;
+    const float airdensity = 1.293f;//空気密度
     float waterpressur, pre, allpressur;//水圧、気圧/大気圧の値、気圧の合計
     float lift;//揚力
 

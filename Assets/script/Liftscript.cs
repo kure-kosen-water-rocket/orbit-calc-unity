@@ -4,48 +4,25 @@ using UnityEngine;
 
 public class Liftscript : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _body;
+    Forcescript fs;
 
-    [SerializeField]
-    private Transform _leftWing;
+    public Transform _body;
+    public Transform _leftWing;
+    public Transform _rightWing;
+    public AnimationCurve _liftCoeff;
+    public AnimationCurve _dragCoeff;
+    public ParticleSystem _lparticle;
+    public ParticleSystem _rparticle;
+    public float _pitchSpeed = 0.5f;
+    public float _rollSpeed = 0.5f;
+    public float _acc = 1000f;
+    public float _rho = 1.225f;
+    public float _area = 12f;
+    public float _initVelocity = 30f;
+    public bool _useLift = true;
 
-    [SerializeField]
-    private Transform _rightWing;
-
-    [SerializeField]
-    private AnimationCurve _liftCoeff;
-
-    [SerializeField]
-    private AnimationCurve _dragCoeff;
-
-    [SerializeField]
-    private ParticleSystem _lparticle;
-
-    [SerializeField]
-    private ParticleSystem _rparticle;
-
-    [SerializeField]
-    private float _pitchSpeed = 0.5f;
-
-    [SerializeField]
-    private float _rollSpeed = 0.5f;
-
-    [SerializeField]
-    private float _acc = 1000f;
-
-    [SerializeField]
-    private float _rho = 1.225f;
-
-    [SerializeField]
-    private float _area = 12f;
-
-    [SerializeField]
-    private float _initVelocity = 30f;
-
-    [SerializeField]
-    private bool _useLift = true;
-
+    public float petweit;
+    public Vector3 lift;
     private Rigidbody _rigid;
 
     private void Start() {
@@ -57,7 +34,7 @@ public class Liftscript : MonoBehaviour
     }
 
     private void Update() {
-        Control();
+        _rigid.AddForce(lift,ForceMode.Force);
     }
 
     private void FixedUpdate() {
@@ -66,37 +43,6 @@ public class Liftscript : MonoBehaviour
         }
     }
 
-    private void Control() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            _lparticle.Play();
-            _rparticle.Play();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            _lparticle.Stop();
-            _rparticle.Stop();
-        }
-
-        if (Input.GetKey(KeyCode.Space)) {
-            _rigid.AddForce(_body.forward * _acc);
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow)) {
-            _body.Rotate(_body.worldToLocalMatrix.MultiplyVector(_body.right), -_pitchSpeed);
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            _body.Rotate(_body.worldToLocalMatrix.MultiplyVector(_body.right), _pitchSpeed);
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            _body.Rotate(_body.worldToLocalMatrix.MultiplyVector(_body.forward), _rollSpeed);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            _body.Rotate(_body.worldToLocalMatrix.MultiplyVector(_body.forward), -_rollSpeed);
-        }
-    }
 
     private void CalcLift() {
         Vector3 lpos = _leftWing.position;
