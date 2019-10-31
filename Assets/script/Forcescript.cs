@@ -9,51 +9,51 @@ public class Forcescript : MonoBehaviour
     Vector3 forcedirection = new Vector3(1.0f, 1.2f, 0f);//射出角度
     Vector3 windforcedirection = new Vector3(1.0f, 1.2f, 0);//風力の向き
 
-    Vector3 force,windforce;//ロケットに与える力、風力
+    Vector3 force, windforce;//ロケットに与える力、風力
 
-    public Vector3  startposition;
+    public Vector3 startposition;
     public Vector3 endposition;
-  
-    public float injectionforce;//力の値 
 
-    public float nozzlearea;//ペットボトルの口の面積
-    public float airpressure;//空気圧
-    public float outpressure;//大気圧
+    public float injectionForce;//力の値 
+
+    public float nozzleArea;//ペットボトルの口の面積
+    public float airPressure;//空気圧
+    public float outPressure;//大気圧
     public float water;//水量
-    public float flyinddistance;//飛んだ距離
-    public float airresistance; //空気抵抗係数
-    public float liftcoefficient;//揚力係数
-    public float wingarea;//翼の面積
-    public float flyspeed;//速さ
+    public float flyingDistance;//飛んだ距離
+    public float wingArea;//翼の面積
+    public float flySpeed;//速さ
 
-    const float gravity=9.8f;//重力
-    const float miri=0.001f;//ミリ単位
-    const float airratio=2/7;//空気の比率
-    const float pressurratio=0.928f;
-    const float airdensity = 1.293f;//空気密度
-    float waterpressur, pre, allpressur;//水圧、気圧/大気圧の値、気圧の合計
-    float lift;//揚力
+    const float gravity = 9.8f;//重力
+    const float miri = 0.001f;//ミリ単位
+    const float airRatio = 2 / 7;//空気の比率
+    const float pressurRatio = 0.928f;
+    const float airDensity = 1.293f;//空気密度
+    float waterPressur;//水圧
+    float pre;//気圧/大気圧の値
+    float allpressur;//気圧の合計
 
     GameObject target;     //    最高点
 
     // Start is called before the first frame update
     void Start()
     {
-        pre = allpressur / outpressure;
-        waterpressur = water * miri * gravity;//水量から水圧を計算
+        pre = allpressur / outPressure;
+        waterPressur = water * miri * gravity;//水量から水圧を計算
         target = gameObject;            //ターゲットをこのオブジェクトに
         rb = gameObject.GetComponent<Rigidbody>();//このオブジェクトのRigidbodyを取得
         startposition = transform.position;           //初期位置をこのオブジェクトの位置に                      
-        allpressur = airpressure + waterpressur;   //気圧の合計を算出
-       
+        allpressur = airPressure + waterPressur;   //気圧の合計を算出
+
     }
     // Update is called once per frame
-    void Update() {
-       
-        double num = Mathf.Pow(pre,airratio);
-        injectionforce = 7 * nozzlearea * allpressur * ((float)num-1)+nozzlearea*(allpressur*pressurratio-outpressure);//力の値を計算
-        windforce = injectionforce * windforcedirection;//風力を決定
-        force = injectionforce * forcedirection;  //発射の力を設定
+    void Update()
+    {
+
+        double num = Mathf.Pow(pre, airRatio);
+        injectionForce = 7 * nozzleArea * allpressur * ((float)num - 1) + nozzleArea * (allpressur * pressurRatio - outPressure);//力の値を計算
+        windforce = injectionForce * windforcedirection;//風力を決定
+        force = injectionForce * forcedirection;  //発射の力を設定
 
         //rb.AddForce(-airresistance * rb.velocity); //空気抵抗を加える
 
@@ -61,15 +61,13 @@ public class Forcescript : MonoBehaviour
         {
             Inp();
         }
-  
-        if  (startposition.x< transform.position.x)//高さが1より小さく、このオブジェクトの座標が初期座標より大きい時
+
+        if (startposition.x < transform.position.x)//高さが1より小さく、このオブジェクトの座標が初期座標より大きい時
         {
             endposition = transform.position;//到達地点を設定
-            flyinddistance = Vector3.Distance(endposition, startposition);
-           
-        }
+            flyingDistance = Vector3.Distance(endposition, startposition);
 
-        lift = (1 / 2) * (liftcoefficient * wingarea * flyspeed * flyspeed * airdensity);//揚力の計算
+        }
     }
     void Inp()
     {
