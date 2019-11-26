@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Liftpowerscript : MonoBehaviour
+public class Liftscript: MonoBehaviour
 {
     Rigidbody rigid;
 

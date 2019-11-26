@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 38868023}
   - component: {fileID: 38868022}
   - component: {fileID: 38868027}
-  - component: {fileID: 38868028}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -235,90 +234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19450c4a2fd4c4fad8b10c499a085587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startposition: {x: 0, y: 0, z: 0}
-  endposition: {x: 0, y: 0, z: 0}
-  injectionforce: 0
-  nozzlearea: 0.012
-  airpressure: 600
-  outpressure: 101.3
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  airPressure: 600
   water: 300
-  flyinddistance: 0
-  airresistance: 0
-  liftcoefficient: 0
-  wingarea: 0
-  flyspeed: 0
---- !u!114 &38868028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38868021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529deb826c486e44fbeeafeccd9d797a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _body: {fileID: 38868026}
-  _leftWing: {fileID: 1049352822}
-  _rightWing: {fileID: 1314388154}
-  _liftCoeff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _dragCoeff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _lparticle: {fileID: 0}
-  _rparticle: {fileID: 0}
-  _pitchSpeed: 0.5
-  _rollSpeed: 0.5
-  _acc: 1000
-  _rho: 1.225
-  _area: 12
-  _initVelocity: 30
-  _useLift: 1
+  flyingDistance: 0
 --- !u!1 &356497025
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +422,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.793, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 1.04, y: -0.03, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -656,7 +576,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.93, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -1, y: 0.1, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
