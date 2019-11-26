@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 38868023}
   - component: {fileID: 38868022}
   - component: {fileID: 38868027}
-  - component: {fileID: 38868028}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -235,28 +234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19450c4a2fd4c4fad8b10c499a085587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startposition: {x: 0, y: 0, z: 0}
-  endposition: {x: 0, y: 0, z: 0}
-  injectionForce: 0
-  nozzleArea: 0.012
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   airPressure: 600
-  outPressure: 101.3
   water: 300
   flyingDistance: 0
-  wingArea: 10
-  flySpeed: 10
---- !u!114 &38868028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38868021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529deb826c486e44fbeeafeccd9d797a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &356497025
 GameObject:
   m_ObjectHideFlags: 0
