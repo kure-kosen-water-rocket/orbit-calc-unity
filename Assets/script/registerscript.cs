@@ -5,7 +5,8 @@ using UnityEngine;
 public class registerscript : MonoBehaviour
 {
     const float registerRatio = 0.34f;
-
+    public float wingAngle;
+    public float liftPower;
     public float h;
     public float registerForceMugnitude;
     float speed;
@@ -23,8 +24,9 @@ public class registerscript : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        liftPower = 1 + wingAngle * 0.1f;
         speed = rb.velocity.magnitude;
-        registerForceMugnitude = speed * registerRatio;
+        registerForceMugnitude = speed * registerRatio+liftPower;
 
     }
     void Update()
@@ -39,7 +41,7 @@ public class registerscript : MonoBehaviour
             registerForce = new Vector3(-registerForceMugnitude*0.5f, 0.0f, 0.0f);
         }
         if(registerswith ==true)   {
-            registerForce = new Vector3(registerForceMugnitude, registerForceMugnitude*0.1f, 0.0f);
+            registerForce = new Vector3(registerForceMugnitude,0.0f, 0.0f);
         }
         if (h>3.5f) {
             rb.AddForce(liftForce, ForceMode.Force);
