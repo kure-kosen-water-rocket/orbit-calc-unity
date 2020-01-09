@@ -24,7 +24,7 @@ public class registerscript : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        liftPower = 1 + wingAngle * 0.1f;
+        liftPower = 1 + wingAngle * 0.5f;
         speed = rb.velocity.magnitude;
         registerForceMugnitude = speed * registerRatio+liftPower;
 
