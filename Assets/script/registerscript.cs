@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class registerscript : MonoBehaviour
 {
-    const float registerRatio = 0.34f;
-    public float wingAngle;
-    public float liftPower;
-    public float h;
-    public float registerForceMugnitude;
-    float speed;
-    bool registerswith;
-    Vector3 registerForce;
+    const float registerRatio = 0.34f;//抵抗係数
+    public float wingAngle;//羽の角度
+    public float liftPower;//揚力
+    public float h;//ロケットの高さ
+    public float registerForceMugnitude;//抵抗力の大きさ
+    float speed;//ロケットの速度
+    bool registerSwith;//揚力の切り替え
+    Vector3 registerForce;//抵抗力
     Forcescript fs;
-     Rigidbody rb;
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +36,12 @@ public class registerscript : MonoBehaviour
         h = this.transform.position.y;
         if (h > 27)
         {
-            registerswith = true;
+            registerSwith = true;
         }
-        if (registerswith ==false) {
+        if (registerSwith ==false) {
             registerForce = new Vector3(-registerForceMugnitude*0.5f, 0.0f, 0.0f);
         }
-        if(registerswith ==true)   {
+        if(registerSwith ==true)   {
             registerForce = new Vector3(registerForceMugnitude,0.0f, 0.0f);
         }
         if (h>3.5f) {
