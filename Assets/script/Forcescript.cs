@@ -12,7 +12,7 @@ public class Forcescript : MonoBehaviour
     Vector3 force;//ロケットに与える力
     Vector3 windForce;//風力
 
-    public Vector3  startPosition;//発射点
+    public Vector3 startPosition;//発射点
     public Vector3 endPosition;//着地点
     Vector3 gravityMugnituid;//重力
   
