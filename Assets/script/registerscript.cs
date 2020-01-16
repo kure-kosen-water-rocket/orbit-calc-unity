@@ -41,7 +41,7 @@ public class registerscript : MonoBehaviour
         if (registerSwith ==false) {
             registerForce = new Vector3(-registerForceMugnitude*0.5f, 0.0f, 0.0f);
         }
-        if(registerSwith ==true)   {
+        if(registerSwith)   {
             registerForce = new Vector3(registerForceMugnitude,0.0f, 0.0f);
         }
         if (h>3.5f) {
