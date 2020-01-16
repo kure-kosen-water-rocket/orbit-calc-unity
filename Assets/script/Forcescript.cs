@@ -18,7 +18,7 @@ public class Forcescript : MonoBehaviour
   
     public float injectionForce;//力の値 
     public float mass;//質量
-    public float nozzlEarea;//ペットボトルの口の面積
+    public float nozzleArea;//ペットボトルの口の面積
     public float airPressure;//空気圧
     public float outPressure;//大気圧
     public float water;//水量
