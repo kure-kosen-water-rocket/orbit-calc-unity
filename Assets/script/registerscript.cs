@@ -7,7 +7,7 @@ public class registerscript : MonoBehaviour
     const float registerRatio = 0.34f;//抵抗係数
     public float wingAngle;//羽の角度
     public float liftPower;//揚力
-    public float h;//ロケットの高さ
+    public float altitude;//ロケットの高度
     public float registerForceMugnitude;//抵抗力の大きさ
     float speed;//ロケットの速度
     bool registerSwith;//揚力の切り替え
