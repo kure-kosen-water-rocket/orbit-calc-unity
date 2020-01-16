@@ -9,7 +9,8 @@ public class Forcescript : MonoBehaviour
     Vector3 forceDirection = new Vector3(2.0f, 1.0f, 0f);//射出角度
     Vector3 windForceDirection = new Vector3(1.0f, 1.2f, 0);//風力の向き
 
-    Vector3 force,windForce;//ロケットに与える力、風力
+    Vector3 force;//ロケットに与える力
+    Vector3 windForce;//風力
 
     public Vector3  startPosition;//発射点
     public Vector3 endPosition;//着地点
