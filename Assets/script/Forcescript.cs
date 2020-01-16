@@ -7,7 +7,7 @@ public class Forcescript : MonoBehaviour
     Rigidbody rb;//Rigidbodyの宣言
 
     Vector3 forceDirection = new Vector3(2.0f, 1.0f, 0f);//射出角度
-    Vector3 windforceDirection = new Vector3(1.0f, 1.2f, 0);//風力の向き
+    Vector3 windForceDirection = new Vector3(1.0f, 1.2f, 0);//風力の向き
 
     Vector3 force,windForce;//ロケットに与える力、風力
 
