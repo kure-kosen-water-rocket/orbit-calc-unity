@@ -27,7 +27,7 @@ public class Forcescript : MonoBehaviour
     public float flySpeed;//速さ
     const float gravity=9.8f;//重力
     const float airRatio=2/7;//空気の比率
-    const float pressurRatio=0.928f;
+    const float pressureRatio=0.928f;
     const float airDensity = 0.5f;//空気密度
     float waterPressure;//水圧
     float pre; //気圧/大気圧の値
