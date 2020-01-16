@@ -39,7 +39,7 @@ public class Forcescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pre = allPressur / outPressure;
+        pre = allPressure / outPressure;
         waterPressure = water * gravity;//水量から水圧を計算
         target = gameObject;            //ターゲットをこのオブジェクトに
         rb = gameObject.GetComponent<Rigidbody>();//このオブジェクトのRigidbodyを取得
