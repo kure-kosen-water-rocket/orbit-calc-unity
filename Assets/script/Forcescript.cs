@@ -43,6 +43,12 @@ public class Forcescript : MonoBehaviour
     private float pressure;// 気圧/大気圧の値
     private float allPressure;// 気圧の合計
 
+    private Quaternion from = Quaternion.Euler(0, 0, 0);
+    private Quaternion to = Quaternion.Euler(0, 0, -90);
+
+    private float t = 0f;
+    private bool a = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +59,7 @@ public class Forcescript : MonoBehaviour
         pressure = allPressure / nozzlePressure;
         // for debug (display value to console)
         allPressure = airPressure + waterPressure; // 気圧の合計を算出
-        this.transform.LookAt(new Vector3(-15.19159f, 6.0f, 0f));
+        this.transform.rotation = Quaternion.Euler(0, 0, -45);
     }
 
     // Update is called once per frame
@@ -65,7 +71,12 @@ public class Forcescript : MonoBehaviour
                 highestY = this.transform.position.y;
                 highestZ = this.transform.position.z;
             }
+
             timeElapsed = 0.0f;
+        }
+        if (t < 0 && a == true) {
+            t += Time.deltaTime;
+            this.transform.rotation = Quaternion.Slerp(from, to, t);
         }
         // ref: http://www.asahi-net.or.jp/~hy9n-knk/sec4.htm (12)
         injectionForce = 7 * NOZZLE_AREA * allPressure * (Mathf.Pow(pressure, AIR_RATIO) - 1) + NOZZLE_AREA * (allPressure * pressurRatio - nozzlePressure);//力の値を計算
@@ -74,9 +85,9 @@ public class Forcescript : MonoBehaviour
 
         //rb.AddForce(-airresistance * rb.velocity); //空気抵抗を加える
         if (this.transform.position.x > 15) {
-            this.transform.LookAt(new Vector3(-36.74836f, -0.5f, 0f));
+            //this.transform.LookAt(new Vector3(-36.74836f, -0.5f, 0f), Vector3.right);
         } else {
-            this.transform.LookAt(new Vector3(-5.19159f, 6.0f, 0f));
+            //this.transform.LookAt(new Vector3(5.19159f, 6.0f, 0f), Vector3.right);
         }
 
         if (Input.GetKeyUp(KeyCode.Return))//enterキーを押した時
@@ -84,6 +95,7 @@ public class Forcescript : MonoBehaviour
             rb.AddForce(windForce, ForceMode.Impulse);//風力を加える
             rb.AddForce(force, ForceMode.Impulse);//ロケットを発射
             rb.useGravity = true;
+            a = true;
         }
         if (startPosition.x < transform.position.x) // 高さが1より小さく、このオブジェクトの座標が初期座標より大きい時
         {
@@ -91,9 +103,5 @@ public class Forcescript : MonoBehaviour
             flyingDistance = Vector3.Distance(endPosition, startPosition);
         }
 
-    }
-
-    private void OnTriggerStay(Collider col) {
-        rb.useGravity = false;
     }
 }
